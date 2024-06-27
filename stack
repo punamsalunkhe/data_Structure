@@ -1,0 +1,124 @@
+package com.app.Stack;
+
+public class Stack<T> {
+     T [] arr;
+     int top;
+     int size;
+	
+     
+     //parameterized constructor
+        public Stack(int size) {
+		super();
+		this.size = size;
+		top=-1;
+		arr=(T[]) new Object[size];
+
+	  }
+
+	//check stack is empty or not
+     public boolean isEmpty() {
+    	 return top==-1;
+    	 
+     }
+     
+     //check stack is full or not
+     public boolean isFull() {
+    	 return top==(size-1);
+     }
+     
+     //push
+     public boolean push(T data) {
+    	 if(isFull()) {
+    		 System.out.println("stack is full");
+    		 return false;
+    	 }
+    	 arr[++top]=data;
+    	 return true;
+     }
+     
+     //pop
+     public T pop() {
+    	 if(isEmpty()) {
+    		 System.out.println("stack is empty");
+    		 return null;
+    	 }
+    	return arr[top--];
+     }
+     
+     //peek
+     public T peek() {
+    	 if(isEmpty()) {
+    		 return null;
+    	 }
+    	
+    	 return arr[top];
+    	
+     }
+     
+     //display
+     public void display() {
+    	 System.out.println("display stack element:");
+    	 for(int i=top;i>-1;i--) {
+    		 System.out.println(arr[i]);
+    		
+    	 }
+     }
+    
+  }
+
+  Main code
+  package com.app.Stack;
+
+import java.util.Scanner;
+
+public class Main {
+     public static void main(String[] args) {
+    	 
+    	 try(Scanner sc=new Scanner(System.in)){
+    		 
+    		 Stack<Integer> s=new Stack<Integer>(5);
+    		 boolean exit=false;
+    		 while(exit!=true) {
+    			 System.out.println("Options: 1.push 2.pop 3.peek 4.display  5.isEmpty 6.isFull 7.exit");
+    			 int choice=sc.nextInt();
+    			 try {
+					 switch(choice)
+					 {
+					  case 1:
+						     System.out.println("enter the elements:");
+					  		 s.push(sc.nextInt());
+					         break;
+					  case 2:
+						    System.out.println("enter the element:");
+						    s.pop();
+						    break;
+					  case 3:
+						   System.out.println( "peek:"+s.peek());
+						   break;
+					  case 4:
+						    s.display();
+						    break;
+					  case 5:
+						    System.out.println(s.isEmpty());
+						    break;
+					  case 6:
+						    System.out.println(s.isFull());
+						    break;
+					  case 7:
+						    exit=true;
+						    break;
+					 }
+    				 
+    				 
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+    		 }
+    	 }
+    
+    	 
+    	 
+ 	
+     }
+}
+
